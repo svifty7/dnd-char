@@ -1,0 +1,114 @@
+// Variables
+@import "variables";
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+}
+
+html, body, .app, .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.main {
+    flex-basis: 100%;
+}
+
+body {
+    font: {
+        size: 16px;
+        style: normal;
+        family: 'Exo 2', sans-serif;
+        weight: 400;
+    }
+
+    color: $black;
+}
+
+a {
+    @include css_anim;
+
+    text-decoration: none;
+    color: $lBlack;
+
+    &:hover {
+        color: $gray;
+    }
+}
+
+section {
+    width: 100%;
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+
+    &:first-child {
+        padding-top: 2rem;
+    }
+
+    &:last-child {
+        padding-bottom: 2rem;
+    }
+
+    @include media($md) {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        &:first-child {
+            padding-top: 3rem;
+        }
+        &:last-child {
+            padding-bottom: 3rem;
+        }
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+
+    li {
+        &:before {
+            content: '\2014';
+            margin: 0 .5rem 0 .75rem;
+        }
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+h2 {
+    font: {
+        size: 2rem;
+    };
+
+    display: inline-block;
+
+    @include media($md) {
+        padding: 0 2rem;
+    }
+}
+
+.schema {
+    display: none !important;
+}
