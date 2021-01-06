@@ -39,6 +39,7 @@
         "typescript": "^3.9.5"
     },
     "gitHooks": {
-        "pre-commit": "yarn run lint"
+        "pre-commit": "yarn run lint --fix",
+        "post-update": "/bin/bash ./deploy.sh"
     }
 }

@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/dnd-char/'
+        : '/',
     filenameHashing: true,
     runtimeCompiler: true,
     chainWebpack: config => {
