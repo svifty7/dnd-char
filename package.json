@@ -8,9 +8,12 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "axios": "^0.21.1",
         "core-js": "^3.6.5",
         "normalize.css": "^8.0.1",
-        "vue": "^3.0.0"
+        "vue": "^3.0.5",
+        "vue-router": "^4.0.2",
+        "vuex": "^4.0.0-rc.2"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^3.3.0",
@@ -18,7 +21,7 @@
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-eslint": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
-        "@vue/compiler-sfc": "^3.0.0",
+        "@vue/compiler-sfc": "^3.0.5",
         "@vue/eslint-config-airbnb": "^5.0.2",
         "babel-eslint": "^10.1.0",
         "eslint": "^6.7.2",
@@ -26,11 +29,13 @@
         "eslint-loader": "4.0.2",
         "eslint-plugin-import": "^2.20.2",
         "eslint-plugin-vue": "^7.0.0-0",
+        "file-loader": "^6.2.0",
         "node-sass": "^4.13.0",
-        "typescript": "^3.9.5",
         "postcss-easy-import": "^3.0.0",
         "postcss-loader": "^3.0.0",
         "postcss-url": "^8.0.0",
-        "sass-loader": "^8.0.0"
+        "sass-loader": "^8.0.0",
+        "svg-sprite-loader": "^5.2.1",
+        "typescript": "^3.9.5"
     }
 }

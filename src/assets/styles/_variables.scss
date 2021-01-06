@@ -32,21 +32,11 @@ $green: #42b983;
 // Mixins
 @mixin content {
     width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    @include media($md) {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include media($xl) {
-        padding-left: calc(50% - 36rem);
-        padding-right: calc(50% - 36rem);
-    }
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-@mixin css_anim($time: .2s, $item: all, $style: ease) {
+@mixin css_anim($time: .3s, $item: all, $style: ease) {
     transition: $item $style $time;
 
     &:hover {
@@ -93,4 +83,41 @@ $green: #42b983;
         background-color: $lBlack;
         color: $white;
     }
+}
+
+// <transition name="fade"/>
+.fade {
+  &-enter, &-leave-to {
+    opacity: 0;
+  }
+
+  &-enter-to, &-leave {
+    opacity: 1;
+  }
+
+  &-enter-active, &-leave-active {
+    transition: opacity ease-in-out .3s;
+  }
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(2em, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-2em, 0);
 }

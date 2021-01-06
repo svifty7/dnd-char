@@ -1,4 +1,5 @@
 $font-path: '../assets/fonts/';
+
 @mixin import-font($name, $file, $file2, $weight, $style) {
     @font-face {
         font-family: '#{$name}';
