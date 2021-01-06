@@ -54,7 +54,7 @@
          max-width: 350px;
          margin: 0 auto;
          text-align: left;
-         color: #2c3e50;
+         color: $black;
          display: flex;
          flex-direction: column;
      }
@@ -72,10 +72,10 @@
          @include css_anim;
 
          width: 100%;
-         color: #2c3e50;
-         border: 1px solid #ced4da;
-         padding: .55rem .85rem;
-         border-radius: .25rem;
+         color: $black;
+         border: 1px solid $gray;
+         padding: 8px 12px;
+         border-radius: 4px;
          appearance: none;
 
     &:focus {
@@ -94,22 +94,22 @@
          justify-content: center;
          align-items: center;
          margin: 24px auto 0;
-         background-color: #2c3e50;
+         background-color: $black;
          border: 0;
-         color: #fff;
+         color: $white;
          appearance: none;
          cursor: pointer;
          font-weight: 400;
          text-align: center;
          white-space: nowrap;
          user-select: none;
-         padding: .55rem .85rem;
-         border-radius: .25rem;
+         padding: 8px 12px;
+         border-radius: 4px;
 
     &:hover {
          @include css_anim;
 
-         background-color: #4F6173;
+         background-color: $lBlack;
      }
     }
     }

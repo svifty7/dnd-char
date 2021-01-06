@@ -245,9 +245,9 @@
             &.fixed {
                 position: sticky;
                 top: 40px;
-                background-color: #fff;
+                background-color: $white;
                 z-index: 100;
-                border-bottom: 1px solid #ced4da;
+                border-bottom: 1px solid $gray;
             }
         }
 
@@ -291,9 +291,9 @@
         }
 
         &__pb {
-            border: 1px solid #ced4da;
-            padding: .55rem .85rem;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            padding: 8px 12px;
+            border-radius: 4px;
             margin-bottom: 8px;
             position: relative;
             width: calc(100% / 3 - (16px / 3.1));
@@ -308,15 +308,15 @@
                 font-size: 24px;
                 font-weight: 600;
                 margin-bottom: 8px;
-                border-bottom: 1px solid #ced4da;
-                padding-bottom: .55rem;
+                border-bottom: 1px solid $gray;
+                padding-bottom: 8px;
             }
         }
 
         &__spd, &__init, &__tempHp {
-            border: 1px solid #ced4da;
-            padding: .55rem .85rem;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            padding: 8px 12px;
+            border-radius: 4px;
             margin-bottom: 8px;
             position: relative;
             display: flex;
@@ -327,8 +327,8 @@
 
             svg {
                 position: absolute;
-                left: .55rem;
-                top: .55rem;
+                left: 8px;
+                top: 8px;
             }
 
             *:not(svg) {
@@ -344,22 +344,22 @@
         }
 
         &__pasPer, &__insp, &__hitDice {
-            border: 1px solid #ced4da;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            border-radius: 4px;
             flex-wrap: nowrap;
             width: 100%;
 
             &-name {
                 text-align: center;
-                border-right: 1px solid #ced4da;
-                padding: .55rem .85rem;
+                border-right: 1px solid $gray;
+                padding: 8px 12px;
                 flex: 1 1 100%;
                 margin: 0;
             }
 
             &-value {
                 text-align: center;
-                padding: .55rem .85rem;
+                padding: 8px 12px;
                 font-weight: 600;
             }
         }
@@ -367,9 +367,9 @@
         &__stat {
             width: calc(100% / 4 - 6px);
             margin-bottom: 8px;
-            border: 1px solid #ced4da;
-            padding: .55rem .85rem;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            padding: 8px 12px;
+            border-radius: 4px;
 
             &:nth-child(4) {
                 margin-right: 0;
@@ -377,11 +377,16 @@
 
             &-plus {
                 text-align: center;
-                font-size: 24px;
+                font-size: 22px;
                 font-weight: 600;
                 margin-bottom: 8px;
-                border-bottom: 1px solid #ced4da;
-                padding-bottom: .55rem;
+                border-bottom: 1px solid $gray;
+                padding-bottom: 8px;
+            }
+
+            &-name {
+                font-size: 14px;
+                margin-top: 4px;
             }
         }
 
@@ -409,9 +414,9 @@
         }
 
         &__hp {
-            border: 1px solid #ced4da;
-            padding: .55rem .85rem;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            padding: 8px 12px;
+            border-radius: 4px;
             margin-bottom: 8px;
             position: relative;
             width: calc(100% / 3 - (16px / 3));
@@ -419,8 +424,8 @@
 
             svg {
                 position: absolute;
-                left: .55rem;
-                top: .55rem;
+                left: 8px;
+                top: 8px;
             }
 
             *:not(svg) {
@@ -433,23 +438,23 @@
                 font-size: 24px;
                 font-weight: 600;
                 margin-bottom: 8px;
-                border-bottom: 1px solid #ced4da;
-                padding-bottom: .55rem;
+                border-bottom: 1px solid $gray;
+                padding-bottom: 8px;
             }
         }
 
         &__armor {
-            border: 1px solid #ced4da;
-            padding: .55rem .85rem;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            padding: 8px 12px;
+            border-radius: 4px;
             position: relative;
             width: calc(100% / 3 - (16px / 3));
             min-height: 86px;
 
             svg {
                 position: absolute;
-                left: .55rem;
-                top: .55rem;
+                left: 8px;
+                top: 8px;
             }
 
             *:not(svg) {
@@ -461,8 +466,8 @@
                 font-size: 24px;
                 font-weight: 600;
                 margin-bottom: 8px;
-                border-bottom: 1px solid #ced4da;
-                padding-bottom: .55rem;
+                border-bottom: 1px solid $gray;
+                padding-bottom: 8px;
             }
 
             &-value {
@@ -479,13 +484,13 @@
         &__saves {
             display: flex;
             flex-wrap: wrap;
-            border: 1px solid #ced4da;
-            border-radius: .25rem;
+            border: 1px solid $gray;
+            border-radius: 4px;
 
             &__title {
                 width: 100%;
-                border-bottom: 1px solid #ced4da;
-                padding: .55rem .40rem;
+                border-bottom: 1px solid $gray;
+                padding: 8px 8px;
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
@@ -493,8 +498,8 @@
             }
 
             &__item {
-                border-bottom: 1px solid #ced4da;
-                padding: .55rem .40rem;
+                border-bottom: 1px solid $gray;
+                padding: 8px 8px;
                 display: inline-flex;
                 width: 50%;
                 justify-content: flex-start;
@@ -502,8 +507,8 @@
                 margin: 0;
                 font-size: 14px;
 
-                &:nth-child(even) {
-                    border-right: 1px solid #ced4da;
+                &:nth-child(odd) {
+                    border-left: 1px solid $gray;
                 }
 
                 &:last-child, &:nth-last-child(2) {

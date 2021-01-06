@@ -85,7 +85,7 @@
             },
 
             character() {
-                return this.$store.getters.getChar(this.$route.params.charID)
+                return this.$store.getters.getChar(this.$route.params.id)
             },
 
             tabComponent() {
@@ -180,37 +180,37 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background-color: #ffffff;
+            background-color: $white;
             z-index: 100;
             position: fixed;
             left: 0;
             bottom: 0;
-            box-shadow: 0 0 12px transparentize(#2c3e50, .75);
+            box-shadow: 0 0 12px transparentize($black, .75);
 
             &-item {
                 @include css_anim($item: color);
 
-                color: #2c3e50;
+                color: $black;
                 text-decoration: none;
                 cursor: pointer;
                 font-size: 16px;
                 font-weight: 500;
                 padding: 12px 16px;
                 display: inline-flex;
-                border-left: 1px solid #ced4da;
+                border-left: 1px solid $gray;
 
                 &:last-child {
-                    border-right: 1px solid #ced4da;
+                    border-right: 1px solid $gray;
                 }
 
                 &.active {
-                    color: #42b983;
+                    color: $green;
                     cursor: default;
                 }
 
                 &:hover {
                     &:not(.active) {
-                        color: darken(#42b983, 15%);
+                        color: $gray;
                     }
                 }
             }
@@ -225,9 +225,9 @@
             &.fixed {
                 position: sticky;
                 top: 40px;
-                background-color: #fff;
+                background-color: $white;
                 z-index: 100;
-                border-bottom: 1px solid #ced4da;
+                border-bottom: 1px solid $gray;
             }
         }
 

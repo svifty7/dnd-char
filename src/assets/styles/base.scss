@@ -6,7 +6,6 @@
   outline: none;
   appearance: none;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
 }
 
 html, body, .app, .main {
@@ -49,32 +48,36 @@ a {
   &:hover {
     color: $gray;
   }
+
+  &.is-active {
+    color: $green;
+  }
 }
 
 section {
   width: 100%;
   display: block;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 16px;
+  padding-bottom: 16px;
   position: relative;
 
   &:first-child {
-    padding-top: 2rem;
+    padding-top: 32px;
   }
 
   &:last-child {
-    padding-bottom: 2rem;
+    padding-bottom: 32px;
   }
 
   @include media($md) {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 32px;
+    padding-bottom: 32px;
 
     &:first-child {
-      padding-top: 3rem;
+      padding-top: 48px;
     }
     &:last-child {
-      padding-bottom: 3rem;
+      padding-bottom: 48px;
     }
   }
 
@@ -90,7 +93,7 @@ ul {
   li {
     &:before {
       content: '\2014';
-      margin: 0 .5rem 0 .75rem;
+      margin: 0 8px 0 12px;
     }
   }
 }

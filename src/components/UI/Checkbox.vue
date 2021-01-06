@@ -26,7 +26,7 @@
     .checkbox {
         width: 16px;
         height: 16px;
-        border: 1px solid #ced4da;
+        border: 1px solid $gray;
         border-radius: 2px;
         display: flex;
         align-items: center;
@@ -37,7 +37,7 @@
             @include css_anim();
 
             opacity: 0;
-            background-color: #4F6173;
+            background-color: $lBlack;
             width: calc(100% - 4px);
             height: calc(100% - 4px);
             border-radius: 2px;

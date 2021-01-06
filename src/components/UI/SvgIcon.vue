@@ -17,9 +17,10 @@
     import '@/assets/icons/svg/shield.svg';
     import '@/assets/icons/svg/speed.svg';
     import '@/assets/icons/svg/sword.svg';
-    import '@/assets/icons/svg/anonim.svg';
+    import '@/assets/icons/svg/anon.svg';
     import '@/assets/icons/svg/dnd.svg';
     import '@/assets/icons/svg/user.svg';
+    import '@/assets/icons/svg/home.svg';
     import '@/assets/icons/svg/user-menu.svg';
 
     export default {

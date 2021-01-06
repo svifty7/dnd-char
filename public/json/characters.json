@@ -158,5 +158,325 @@
       "copper": "7"
     },
     "bag": "text text text text text text text text text text text text text text text text text text text text text "
+  },
+  {
+    "id": "2",
+    "name": "Грут",
+    "lvl": "7",
+    "exp": "123",
+    "class": "Плут",
+    "background": "Шарлатан",
+    "race": "Табакси",
+    "stats": {
+      "str": {
+        "name": "СИЛ",
+        "fullName": "Сила",
+        "value": "11",
+        "extra": {
+          "athletic": {
+            "name": "Атлетика",
+            "known": false
+          }
+        }
+      },
+      "dex": {
+        "name": "ЛОВ",
+        "fullName": "Ловкость",
+        "value": "19",
+        "extra": {
+          "acrobatics": {
+            "name": "Акробатика",
+            "known": false
+          },
+          "prestidigitation": {
+            "name": "Ловкость рук",
+            "known": true
+          },
+          "stealth": {
+            "name": "Скрытность",
+            "known": true
+          }
+        }
+      },
+      "con": {
+        "name": "ТЕЛ",
+        "fullName": "Телосложение",
+        "value": "14"
+      },
+      "int": {
+        "name": "ИНТ",
+        "fullName": "Интеллект",
+        "value": "11",
+        "extra": {
+          "magic": {
+            "name": "Магия",
+            "known": false
+          },
+          "history": {
+            "name": "История",
+            "known": false
+          },
+          "nature": {
+            "name": "Природа",
+            "known": true
+          },
+          "analise": {
+            "name": "Анализ",
+            "known": true
+          },
+          "religion": {
+            "name": "Религия",
+            "known": false
+          }
+        }
+      },
+      "wis": {
+        "name": "МУДР",
+        "fullName": "Мудрость",
+        "value": "12",
+        "extra": {
+          "attentiveness": {
+            "name": "Внимательность",
+            "known": true
+          },
+          "survive": {
+            "name": "Выживание",
+            "known": true
+          },
+          "medicine": {
+            "name": "Медицина",
+            "known": true
+          },
+          "insight": {
+            "name": "Проницательность",
+            "known": false
+          },
+          "animalHandling": {
+            "name": "Уход за животными",
+            "known": false
+          }
+        }
+      },
+      "cha": {
+        "name": "ХАР",
+        "fullName": "Харизма",
+        "value": "15",
+        "extra": {
+          "performance": {
+            "name": "Выступление",
+            "known": true
+          },
+          "intimidation": {
+            "name": "Запугивание",
+            "known": false
+          },
+          "deception": {
+            "name": "Обман",
+            "known": true
+          },
+          "persuasion": {
+            "name": "Убеждение",
+            "known": true
+          }
+        }
+      }
+    },
+    "hp": "49",
+    "hpNow": "40",
+    "tempHp": "",
+    "armor": "15",
+    "armorPlus": "",
+    "speed": "30",
+    "equip": {
+      "armor": {
+        "name": "Кожаный доспех",
+        "class": "11"
+      },
+      "shield": {
+        "name": "",
+        "class": ""
+      },
+      "head": "шапка \"Охотник на акул\"",
+      "neck": "золотая медаль \"Лучший рыбак Димасии\"",
+      "wrist": "",
+      "back": "",
+      "belt": "",
+      "rings": [
+        {
+          "0": {
+            "name": "Кольцо защиты",
+            "class": "1"
+          }
+        }
+      ],
+      "boots": ""
+    },
+    "money": {
+      "platinum": "223",
+      "gold": "53",
+      "silver": "5",
+      "copper": "7"
+    },
+    "bag": "text text text text text text text text text text text text text text text text text text text text text "
+  },
+  {
+    "id": "3",
+    "name": "Грут",
+    "lvl": "7",
+    "exp": "123",
+    "class": "Плут",
+    "background": "Шарлатан",
+    "race": "Табакси",
+    "stats": {
+      "str": {
+        "name": "СИЛ",
+        "fullName": "Сила",
+        "value": "11",
+        "extra": {
+          "athletic": {
+            "name": "Атлетика",
+            "known": false
+          }
+        }
+      },
+      "dex": {
+        "name": "ЛОВ",
+        "fullName": "Ловкость",
+        "value": "19",
+        "extra": {
+          "acrobatics": {
+            "name": "Акробатика",
+            "known": false
+          },
+          "prestidigitation": {
+            "name": "Ловкость рук",
+            "known": true
+          },
+          "stealth": {
+            "name": "Скрытность",
+            "known": true
+          }
+        }
+      },
+      "con": {
+        "name": "ТЕЛ",
+        "fullName": "Телосложение",
+        "value": "14"
+      },
+      "int": {
+        "name": "ИНТ",
+        "fullName": "Интеллект",
+        "value": "11",
+        "extra": {
+          "magic": {
+            "name": "Магия",
+            "known": false
+          },
+          "history": {
+            "name": "История",
+            "known": false
+          },
+          "nature": {
+            "name": "Природа",
+            "known": true
+          },
+          "analise": {
+            "name": "Анализ",
+            "known": true
+          },
+          "religion": {
+            "name": "Религия",
+            "known": false
+          }
+        }
+      },
+      "wis": {
+        "name": "МУДР",
+        "fullName": "Мудрость",
+        "value": "12",
+        "extra": {
+          "attentiveness": {
+            "name": "Внимательность",
+            "known": true
+          },
+          "survive": {
+            "name": "Выживание",
+            "known": true
+          },
+          "medicine": {
+            "name": "Медицина",
+            "known": true
+          },
+          "insight": {
+            "name": "Проницательность",
+            "known": false
+          },
+          "animalHandling": {
+            "name": "Уход за животными",
+            "known": false
+          }
+        }
+      },
+      "cha": {
+        "name": "ХАР",
+        "fullName": "Харизма",
+        "value": "15",
+        "extra": {
+          "performance": {
+            "name": "Выступление",
+            "known": true
+          },
+          "intimidation": {
+            "name": "Запугивание",
+            "known": false
+          },
+          "deception": {
+            "name": "Обман",
+            "known": true
+          },
+          "persuasion": {
+            "name": "Убеждение",
+            "known": true
+          }
+        }
+      }
+    },
+    "hp": "49",
+    "hpNow": "40",
+    "tempHp": "",
+    "armor": "15",
+    "armorPlus": "",
+    "speed": "30",
+    "equip": {
+      "armor": {
+        "name": "Кожаный доспех",
+        "class": "11"
+      },
+      "shield": {
+        "name": "",
+        "class": ""
+      },
+      "head": "шапка \"Охотник на акул\"",
+      "neck": "золотая медаль \"Лучший рыбак Димасии\"",
+      "wrist": "",
+      "back": "",
+      "belt": "",
+      "rings": [
+        {
+          "0": {
+            "name": "Кольцо защиты",
+            "class": "1"
+          }
+        }
+      ],
+      "boots": ""
+    },
+    "money": {
+      "platinum": "223",
+      "gold": "53",
+      "silver": "5",
+      "copper": "7"
+    },
+    "bag": "text text text text text text text text text text text text text text text text text text text text text "
   }
 ]

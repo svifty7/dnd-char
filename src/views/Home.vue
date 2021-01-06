@@ -3,9 +3,9 @@
         <div v-if="charList"
              class="chars__list"
         >
-            <router-link v-for="(char, charId) in charList"
-                         :key="charId"
-                         :to="{ name: 'char', params: { charID: char.id } }"
+            <router-link v-for="char in charList"
+                         :key="char.id"
+                         :to="{ name: 'char', params: { id: char.id } }"
                          class="chars__item"
             >
                 <div v-if="'img' in char && !!char.img"
@@ -14,7 +14,7 @@
                 />
 
                 <svg-icon v-else
-                          icon-name="anonim"
+                          icon-name="anon"
                           :size="48"
                 />
 
@@ -24,12 +24,12 @@
                     </div>
 
                     <div class="chars__item-info">
-                        <div class="chars__item-class">
-                            {{ char.class }}
+                        <div class="chars__item-lvl">
+                            {{ `${char.lvl} ур.` }}
                         </div>
 
-                        <div class="chars__item-lvl">
-                            {{ `${char.lvl}` }}
+                        <div class="chars__item-class">
+                            {{ char.class }}
                         </div>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
             align-items: center;
             justify-content: flex-start;
             width: 100%;
-            color: #2c3e50;
-            border: 1px solid #ced4da;
+            color: $black;
             padding: 8px 12px;
             border-radius: 4px;
             text-decoration: none;
             text-align: left;
             cursor: pointer;
+            box-shadow: 0 0 10px 0 transparentize($black, .85);
 
             &:nth-child(n+2) {
                 margin-top: 8px;
@@ -95,8 +95,7 @@
             &:hover {
                 @include css_anim;
 
-                background-color: #f4f4f4;
-                box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+                background-color: lighten($gray, 14%);
             }
 
             &-img {
@@ -137,8 +136,11 @@
                 max-width: 100%;
             }
 
-            &-lvl {
+            &-class {
                 margin-left: 8px;
+            }
+
+            &-lvl {
                 font-weight: 600;
             }
         }

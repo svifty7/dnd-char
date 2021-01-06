@@ -1,6 +1,8 @@
 const path = require('path');
 
 module.exports = {
+    filenameHashing: true,
+    runtimeCompiler: true,
     chainWebpack: config => {
         const svgRule = config.module.rule('svg');
 

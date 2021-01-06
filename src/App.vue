@@ -2,38 +2,48 @@
     <div class="dnd-app">
         <header class="header">
             <div class="nav__btn"
-                 :class="{ 'is-opened': menu }"
-                 @click.left.exact.prevent="menu = !menu"
+                 :class="{ 'is-opened': menu.opened }"
+                 @click.left.exact.prevent="menu.opened = !menu.opened"
             />
 
             <div v-if="$route.meta.title"
                  class="header__title"
-                 @click.left.exact.self.prevent="scrollTop"
             >
                 {{ $route.meta.title }}
             </div>
+
+            <router-link v-if="$route.name !== 'home'"
+                         :to="{ name: 'home' }"
+                         class="header__home"
+                         @click.left.exact="menu.opened = false"
+            >
+                <svg-icon icon-name="home"
+                          size="24"
+                />
+            </router-link>
         </header>
 
-        <div class="nav"
-             :class="{ 'is-opened': menu }"
-             @click.left.exact.self.prevent="menu = false"
+        <div v-scroll-lock="menu.opened"
+             class="nav"
+             :class="{ 'is-opened': menu.opened }"
+             @click.left.exact.self.prevent="menu.opened = false"
         >
-            <div class="nav__body"
-                 :class="{ 'is-opened': menu }"
-            >
-                <router-link to="/"
+            <div class="nav__body">
+                <router-link v-for="(item, itemKey) in menu.list"
+                             :key="itemKey"
+                             :to="{ name: item.link, params: 'params' in item && item.params ? item.params : {} }"
                              class="nav__item"
-                             @click.left.exact="menu = false"
+                             active-class="is-active"
+                             @click.left.exact="menu.opened = false"
                 >
-                    Список персонажей
+                    {{ item.name }}
                 </router-link>
 
-                <router-link to="/about"
-                             class="nav__item"
-                             @click.left.exact="menu = false"
-                >
-                    О приложении
-                </router-link>
+                <div class="icons8">
+                    Все иконки взяты с сайта <a href="//icons8.ru"
+                                                target="_blank"
+                    >Icons8</a>
+                </div>
             </div>
         </div>
 
@@ -50,21 +60,27 @@
 </template>
 
 <script>
+    import SvgIcon from '@/components/UI/SvgIcon';
+    import ScrollLock from '@/helpers/mixins/ScrollLock';
+
     export default {
         name: 'App',
+        components: { SvgIcon },
+        mixins: [ScrollLock],
         data() {
             return {
-                menu: false,
+                menu: {
+                    opened: false,
+                    list: [{
+                        name: 'Список персонажей',
+                        link: 'home'
+                    }, {
+                        name: 'О приложении',
+                        link: 'about'
+                    }]
+                },
             };
         },
-        methods: {
-            scrollTop() {
-                window.scroll({
-                    top: 0,
-                    behavior: 'smooth'
-                })
-            }
-        }
     };
 </script>
 
@@ -83,7 +99,7 @@
         width: 100%;
         height: 40px;
         z-index: 100;
-        background-color: #fff;
+        background-color: $white;
         display: flex;
         align-items: center;
         padding-top: 8px;
@@ -99,6 +115,29 @@
             font-size: 18px;
             text-align: center;
         }
+
+        &__home {
+            @include css_anim($item: color);
+
+            display: flex;
+            position: absolute;
+            top: 8px;
+            right: 16px;
+            left: initial;
+            color: $black;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 2px;
+            cursor: pointer;
+
+            &:hover {
+                @include css_anim();
+
+                color: $lBlack;
+            }
+        }
     }
 
     .nav {
@@ -109,33 +148,35 @@
         left: 0;
         width: 100%;
         height: calc(100% - 40px);
-        background-color: transparentize(#2c3e50, .7);
+        background-color: transparentize($black, .7);
         pointer-events: none;
         opacity: 0;
         z-index: 110;
         display: flex;
         justify-content: flex-start;
 
-        &.is-opened {
-            opacity: 1;
-            pointer-events: auto;
-            cursor: pointer;
-        }
-
         &__body {
             @include css_anim();
 
-            width: 228px;
+            width: 288px;
             height: 100%;
-            background-color: #fff;
+            background-color: $white;
             transform: translateX(-100%);
             display: flex;
             flex-direction: column;
             padding-top: 16px;
-            box-shadow: inset 1px 4px 9px -6px transparentize(#2c3e50, .7);
+            box-shadow: inset 1px 4px 9px -6px transparentize($black, .7);
             cursor: default;
+            position: relative;
+            overflow: auto;
+        }
 
-            &.is-opened {
+        &.is-opened {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+
+            .nav__body {
                 transform: translateX(0);
             }
         }
@@ -145,7 +186,7 @@
             position: fixed;
             top: 8px;
             left: 16px;
-            color: #2c3e50;
+            color: $black;
             align-items: center;
             justify-content: center;
             width: 24px;
@@ -200,6 +241,37 @@
             display: flex;
             width: 100%;
             cursor: pointer;
+            flex-shrink: 0;
+            color: $black;
+
+            &:last-of-type {
+                padding-bottom: 24px;
+            }
+
+            &.is-active {
+                color: $green;
+            }
+        }
+
+        .icons8 {
+            width: 100%;
+            border-top: 1px solid $gray;
+            padding: 12px 16px;
+            font-size: 14px;
+            background-color: $white;
+            color: $black;
+            margin-top: auto;
+            position: sticky;
+            left: 0;
+            bottom: 0;
+
+            a {
+                color: $green;
+
+                &:hover {
+                    color: $gray;
+                }
+            }
         }
     }
 </style>

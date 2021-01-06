@@ -96,13 +96,13 @@
             padding-bottom: 12px;
 
             &__stat {
-                border-radius: .25rem;
+                border-radius: 4px;
                 margin-bottom: 8px;
-                border: 1px solid #ced4da;
+                border: 1px solid $gray;
 
                 &-initial{
-                    border-bottom: 1px solid #ced4da;
-                    padding: .55rem .85rem;
+                    border-bottom: 1px solid $gray;
+                    padding: 8px 12px;
                     display: flex;
                     justify-content: space-between;
                 }
@@ -113,11 +113,11 @@
             }
 
             &__item {
-                border-bottom: 1px solid #ced4da;
+                border-bottom: 1px solid $gray;
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
-                padding: .55rem .85rem;
+                padding: 8px 12px;
 
                 &:last-child {
                     border-bottom: 0;
