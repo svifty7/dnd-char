@@ -1,24 +1,34 @@
 <template>
     <div class="char__stats">
-        <div class="char__row char__insp">
-            <div class="char__insp-name">
+        <div class="char__row char__ins">
+            <div class="char__ins-name">
                 Вдохновение
             </div>
-            <div class="char__insp-value">
+            <div class="char__ins-value">
                 0
             </div>
         </div>
         <div class="char__row base">
-            <div class="char__hp">
+            <div class="char__hp is-now">
                 <svg-icon icon-name="heart"
                           size="14"
                 />
 
-                <div class="char__hp-now">
+                <div v-if="!character.hpNow"
+                     class="char__hp-value"
+                >
+                    {{ character.hp }}
+                </div>
+
+                <div v-if="character.hpNow"
+                     class="char__hp-now"
+                >
                     {{ character.hpNow }}
                 </div>
 
-                <div class="char__hp-initial">
+                <div v-if="character.hpNow"
+                     class="char__hp-initial"
+                >
                     {{ character.hp }}
                 </div>
             </div>
@@ -33,7 +43,7 @@
             </div>
             <div class="char__pb">
                 <div class="char__pb-value">
-                    {{ setProfBonus(character.lvl) }}
+                    {{ getProfBonus(character.lvl) }}
                 </div>
 
                 <div class="char__pb-name">
@@ -61,7 +71,7 @@
                 />
 
                 <div class="char__init-value">
-                    {{ setBaseStats(character.stats.dex) }}
+                    {{ getBaseStat(character.stats.dex) }}
                 </div>
             </div>
             <div class="char__spd">
@@ -70,7 +80,7 @@
                 />
 
                 <div class="char__spd-value">
-                    30
+                    {{ character.speed }}
                 </div>
             </div>
         </div>
@@ -83,7 +93,9 @@
                  class="char__saves__item"
             >
                 <span class="char__saves__item-name">{{ charSave.fullName }}</span>
-                <span class="char__saves__item-value">{{ setSaveStats(charSave) }}</span>
+                <span class="char__saves__item-value">
+                    {{ getPlus(getSaveStat(charSave)) }}
+                </span>
             </div>
         </div>
         <div class="char__row stats">
@@ -92,7 +104,7 @@
                  class="char__stat"
             >
                 <div class="char__stat-plus">
-                    {{ setBaseStats(charStat) }}
+                    {{ getPlus(getBaseStat(charStat)) }}
                 </div>
                 <div class="char__stat-normal">
                     {{ charStat.value }}
@@ -134,7 +146,7 @@
                 пасс. Внимательность
             </div>
             <div class="char__pasPer-value">
-                {{ +setBaseStats(character.stats.wis) + 10 }}
+                {{ getAttentiveness() }}
             </div>
         </div>
         <div class="char__row char__hitDice">
@@ -142,7 +154,7 @@
                 Кость хитов
             </div>
             <div class="char__hitDice-value">
-                1к8
+                1к10
             </div>
         </div>
     </div>
@@ -176,27 +188,21 @@
             }
         },
         methods: {
-            setBaseStats(charStat) {
-                let statPlusValue = Math.floor((charStat.value - 10) / 2);
-
-                if (statPlusValue > 0) {
-                    statPlusValue = `+${ statPlusValue}`
-                }
-
-                return statPlusValue;
+            getBaseStat(charStat) {
+                return Math.floor((charStat.value - 10) / 2);
             },
 
-            setSaveStats(charSave) {
+            getSaveStat(charSave) {
                 let statPlusValue = Math.floor((charSave.value - 10) / 2);
 
-                if (statPlusValue > 0) {
-                    statPlusValue = `+${ statPlusValue}`
+                if (charSave.known) {
+                    statPlusValue += this.getProfBonus(this.character.lvl);
                 }
 
                 return statPlusValue;
             },
 
-            setProfBonus(lvl) {
+            getProfBonus(lvl) {
                 let profBonus;
 
                 if (lvl < 5) {
@@ -211,10 +217,25 @@
                     profBonus = 6
                 }
 
-                if (profBonus > 0) {
-                    profBonus = `+${ profBonus}`
-                }
                 return profBonus;
+            },
+
+            getAttentiveness() {
+                const { lvl, stats } = this.character;
+                const { wis } = stats;
+                const { attentiveness } = wis.extra;
+
+                let stat = this.getBaseStat(wis);
+
+                if (attentiveness.known) {
+                    stat += this.getProfBonus(lvl);
+                }
+
+                return stat + 10
+            },
+
+            getPlus(value) {
+                return value > 0 ? `+${value}` : value
             },
 
             resetLive() {
@@ -343,7 +364,7 @@
             }
         }
 
-        &__pasPer, &__insp, &__hitDice {
+        &__pasPer, &__ins, &__hitDice {
             border: 1px solid $gray;
             border-radius: 4px;
             flex-wrap: nowrap;
@@ -391,6 +412,7 @@
         }
 
         &__dead-or-live {
+            width: calc((100% / 4 - 6px) * 2 + 8px);
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -421,6 +443,10 @@
             position: relative;
             width: calc(100% / 3 - (16px / 3));
             min-height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
 
             svg {
                 position: absolute;
@@ -431,6 +457,7 @@
             *:not(svg) {
                 text-align: center;
                 position: relative;
+                width: 100%;
             }
 
             &-now {
@@ -440,6 +467,12 @@
                 margin-bottom: 8px;
                 border-bottom: 1px solid $gray;
                 padding-bottom: 8px;
+            }
+
+            &-value {
+                text-align: center;
+                font-size: 32px;
+                font-weight: 600;
             }
         }
 

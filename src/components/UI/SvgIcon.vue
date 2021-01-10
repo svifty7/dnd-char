@@ -21,6 +21,7 @@
     import '@/assets/icons/svg/dnd.svg';
     import '@/assets/icons/svg/user.svg';
     import '@/assets/icons/svg/home.svg';
+    import '@/assets/icons/svg/bag.svg';
     import '@/assets/icons/svg/user-menu.svg';
 
     export default {

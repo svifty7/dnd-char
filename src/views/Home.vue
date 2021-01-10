@@ -20,7 +20,7 @@
 
                 <div class="chars__item-cont">
                     <div class="chars__item-name">
-                        {{ char.name }}
+                        <b>{{ char.fullName || char.name }}</b> {{ char.clan || '' }}
                     </div>
 
                     <div class="chars__item-info">
@@ -59,7 +59,7 @@
             },
         },
         mounted() {
-            this.$store.dispatch('setChars');
+            this.$store.dispatch('getChars');
         },
         methods: {},
     };
@@ -122,14 +122,16 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 width: 100%;
-                font-weight: 600;
             }
 
             &-info {
                 display: flex;
                 align-items: flex-start;
                 flex-wrap: wrap;
-                margin-top: 4px;
+                margin-top: 8px;
+                border-top: 1px solid $gray;
+                width: 100%;
+                padding-top: 4px;
             }
 
             &-lvl, &-class {

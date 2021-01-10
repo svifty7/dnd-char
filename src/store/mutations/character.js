@@ -1,5 +1,9 @@
 export default {
-    changeChars(state, payload) {
+    setChars(state, payload) {
         state.charList = payload
     },
+
+    setChar(state, payload) {
+        state.character = state.charList.find(item => item.id === payload)
+    }
 }

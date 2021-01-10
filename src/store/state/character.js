@@ -1,3 +1,4 @@
 export default {
-    charList: []
+    charList: [],
+    character: {}
 }

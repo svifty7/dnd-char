@@ -11,9 +11,6 @@ export default [
         path: '/char/:id',
         name: 'char',
         component: () => import('@/views/Char.vue'),
-        meta: {
-            title: 'Grut'
-        },
     },
     {
         path: '/about',

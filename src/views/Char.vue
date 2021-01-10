@@ -28,7 +28,7 @@
             </div>
             <div class="char__row align">
                 <div class="char__align">
-                    Хаотично-нейтральный
+                    {{ character.align }}
                 </div>
             </div>
         </div>
@@ -57,6 +57,15 @@
                           size="24"
                 />
             </div>
+
+            <div class="char__nav-item"
+                 :class="{ 'active': tab === 'bag' }"
+                 @click.left.exact.prevent="setTab('bag')"
+            >
+                <svg-icon icon-name="bag"
+                          size="24"
+                />
+            </div>
         </div>
     </section>
 
@@ -69,6 +78,7 @@
 
 <script>
     import { defineAsyncComponent } from 'vue';
+    import { mapGetters } from 'vuex';
     import SvgIcon from '@/components/UI/SvgIcon';
 
     export default {
@@ -80,18 +90,19 @@
             }
         },
         computed: {
-            charList() {
-                return this.$store.getters.getChars
-            },
-
-            character() {
-                return this.$store.getters.getChar(this.$route.params.id)
-            },
+            ...mapGetters({
+                charList: 'getChars',
+                character: 'getChar',
+            }),
 
             tabComponent() {
                 switch (this.tab) {
                     case 'extra': {
                         return defineAsyncComponent(() => import('@/components/character/Extra.vue'));
+                    }
+
+                    case 'bag': {
+                        return defineAsyncComponent(() => import('@/components/character/Bag.vue'));
                     }
 
                     default: {
@@ -101,69 +112,23 @@
             },
         },
         mounted() {
-            if (!Array.isArray(this.charList) || !this.charList.length) {
-                this.$store.dispatch('setChars')
-            }
+            this.setCharacter();
         },
         methods: {
             setTab(name) {
                 this.tab = name
             },
 
-            setExp(lvl) {
-                const level = parseInt(lvl, 10);
-
-                let totalExp;
-
-                if (level === 1) {
-                    totalExp = 300
-                } else if (level === 2) {
-                    totalExp = 900
-                } else if (level === 3) {
-                    totalExp = 2700
-                } else if (level === 4) {
-                    totalExp = 6500
-                } else if (level === 5) {
-                    totalExp = 14000
-                } else if (level === 6) {
-                    totalExp = 23000
-                } else if (level === 7) {
-                    totalExp = 34000
-                } else if (level === 8) {
-                    totalExp = 48000
-                } else if (level === 9) {
-                    totalExp = 64000
-                } else if (level === 10) {
-                    totalExp = 85000
-                } else if (level === 11) {
-                    totalExp = 100000
-                } else if (level === 12) {
-                    totalExp = 120000
-                } else if (level === 13) {
-                    totalExp = 140000
-                } else if (level === 14) {
-                    totalExp = 165000
-                } else if (level === 15) {
-                    totalExp = 195000
-                } else if (level === 16) {
-                    totalExp = 225000
-                } else if (level === 17) {
-                    totalExp = 265000
-                } else if (level === 18) {
-                    totalExp = 305000
-                } else if (level === 19) {
-                    totalExp = 355000
+            setCharacter() {
+                if (Array.isArray(this.charList) && this.charList.length) {
+                    this.$store.dispatch('setChar', this.$route.params.id);
                 } else {
-                    totalExp = ''
+                    this.$store.dispatch('getChars')
+                        .then(() => {
+                            this.$store.dispatch('setChar', this.$route.params.id);
+                        })
                 }
-
-                if (totalExp > 0) {
-                    totalExp = totalExp.toLocaleString();
-                    totalExp = ` / ${ totalExp}`
-                }
-
-                return totalExp;
-            }
+            },
         }
     }
 </script>

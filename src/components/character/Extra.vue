@@ -1,7 +1,6 @@
 <template>
     <div class="char__extraStats">
         <div v-for="(charStat, statKey) in character.stats"
-             v-show="charStat.extra"
              :key="statKey"
              class="char__extraStats__stat"
         >
@@ -9,10 +8,12 @@
                 <div class="char__extraStats__stat-title">
                     {{ charStat.fullName }}
                 </div>
+
                 <div class="char__extraStats__stat-value">
-                    {{ setSaveStats(charStat) }}
+                    {{ getStat(charStat) }}
                 </div>
             </div>
+
             <div v-for="(extraSave, extraSaveKey) in charStat.extra"
                  :key="extraSaveKey"
                  class="char__extraStats__item"
@@ -20,8 +21,9 @@
                 <div class="char__extraStats__item-name">
                     {{ extraSave.name }}
                 </div>
+
                 <div class="char__extraStats__item-value">
-                    {{ setExtraSave(charStat, extraSave, setProfBonus(character.lvl)) }}
+                    {{ getStat(charStat, extraSave) }}
                 </div>
             </div>
         </div>
@@ -38,31 +40,21 @@
             }
         },
         methods: {
-            setSaveStats(charStat) {
+            getBaseStat(charStat) {
+                return Math.floor((charStat.value - 10) / 2);
+            },
+
+            getStat(charStat, extraSave = null) {
                 let statPlusValue = Math.floor((charStat.value - 10) / 2);
 
-                if (statPlusValue > 0) {
-                    statPlusValue = `+${ statPlusValue}`
+                if (charStat.known || (extraSave && extraSave.known)) {
+                    statPlusValue += this.getProfBonus(this.character.lvl);
                 }
 
                 return statPlusValue;
             },
 
-            setExtraSave(charStat, extraSave, profBonus) {
-                let statPlusValue = Math.floor((charStat.value - 10) / 2);
-
-                if (extraSave.known) {
-                    statPlusValue += parseInt(profBonus, 10);
-                }
-
-                if (statPlusValue > 0) {
-                    statPlusValue = `+${ statPlusValue}`
-                }
-
-                return statPlusValue;
-            },
-
-            setProfBonus(lvl) {
+            getProfBonus(lvl) {
                 let profBonus;
 
                 if (lvl < 5) {
@@ -77,12 +69,8 @@
                     profBonus = 6
                 }
 
-                if (profBonus > 0) {
-                    profBonus = `+${ profBonus}`
-                }
-
                 return profBonus;
-            }
+            },
         }
     }
 </script>
@@ -101,10 +89,10 @@
                 border: 1px solid $gray;
 
                 &-initial{
-                    border-bottom: 1px solid $gray;
                     padding: 8px 12px;
                     display: flex;
                     justify-content: space-between;
+                    background-color: transparentize($gray, .75);
                 }
 
                 &-title {
@@ -113,7 +101,7 @@
             }
 
             &__item {
-                border-bottom: 1px solid $gray;
+                border-top: 1px solid $gray;
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
