@@ -155,21 +155,20 @@
             &-item {
                 @include css_anim($item: color);
 
-                color: $black;
+                color: $gray;
                 text-decoration: none;
                 cursor: pointer;
                 font-size: 16px;
                 font-weight: 500;
                 padding: 12px 16px;
                 display: inline-flex;
-                border-left: 1px solid $gray;
 
-                &:last-child {
-                    border-right: 1px solid $gray;
+                &:nth-child(n+2) {
+                    border-left: 1px solid $gray;
                 }
 
                 &.active {
-                    color: $green;
+                    color: $black;
                     cursor: default;
                 }
 

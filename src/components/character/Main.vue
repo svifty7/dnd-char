@@ -10,9 +10,7 @@
         </div>
         <div class="char__row base">
             <div class="char__hp is-now">
-                <svg-icon icon-name="heart"
-                          size="14"
-                />
+                <svg-icon icon-name="heart"/>
 
                 <div v-if="!character.hpNow"
                      class="char__hp-value"
@@ -33,9 +31,7 @@
                 </div>
             </div>
             <div class="char__tempHp">
-                <svg-icon icon-name="heart-outline"
-                          size="14"
-                />
+                <svg-icon icon-name="heart-outline"/>
 
                 <div class="char__tempHp-value">
                     {{ character.tempHp > 0 ? character.tempHp : '0' }}
@@ -51,9 +47,7 @@
                 </div>
             </div>
             <div class="char__armor">
-                <svg-icon icon-name="shield"
-                          size="14"
-                />
+                <svg-icon icon-name="shield"/>
 
                 <div :class="[character.armorPlus > 0 ? 'char__armor-initial' : 'char__armor-value']">
                     {{ character.armor }}
@@ -66,18 +60,14 @@
                 </div>
             </div>
             <div class="char__init">
-                <svg-icon icon-name="sword"
-                          size="14"
-                />
+                <svg-icon icon-name="sword"/>
 
                 <div class="char__init-value">
                     {{ getBaseStat(character.stats.dex) }}
                 </div>
             </div>
             <div class="char__spd">
-                <svg-icon icon-name="speed"
-                          size="14"
-                />
+                <svg-icon icon-name="speed"/>
 
                 <div class="char__spd-value">
                     {{ character.speed }}
@@ -103,14 +93,16 @@
                  :key="statKey"
                  class="char__stat"
             >
+                <div class="char__stat-name">
+                    {{ charStat.name }}
+                </div>
+
                 <div class="char__stat-plus">
                     {{ getPlus(getBaseStat(charStat)) }}
                 </div>
+
                 <div class="char__stat-normal">
                     {{ charStat.value }}
-                </div>
-                <div class="char__stat-name">
-                    {{ charStat.name }}
                 </div>
             </div>
 
@@ -128,7 +120,7 @@
                     />
                 </div>
                 <div class="char__dead-or-live__row">
-                    <svg-icon icon-name="reaper"
+                    <svg-icon icon-name="death"
                               size="32"
                               @click.left.exact.prevent="resetLive"
                     />
@@ -396,18 +388,18 @@
                 margin-right: 0;
             }
 
+            &-name {
+                font-size: 14px;
+            }
+
             &-plus {
                 text-align: center;
                 font-size: 22px;
                 font-weight: 600;
+                margin-top: 4px;
                 margin-bottom: 8px;
                 border-bottom: 1px solid $gray;
                 padding-bottom: 8px;
-            }
-
-            &-name {
-                font-size: 14px;
-                margin-top: 4px;
             }
         }
 

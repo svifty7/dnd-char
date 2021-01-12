@@ -13,7 +13,7 @@
     import '@/assets/icons/svg/angel.svg';
     import '@/assets/icons/svg/heart.svg';
     import '@/assets/icons/svg/heart-outline.svg';
-    import '@/assets/icons/svg/reaper.svg';
+    import '@/assets/icons/svg/death.svg';
     import '@/assets/icons/svg/shield.svg';
     import '@/assets/icons/svg/speed.svg';
     import '@/assets/icons/svg/sword.svg';
