@@ -34,6 +34,9 @@ module.exports = {
         loaderOptions: {
             sass: {
                 prependData: '@import "@/assets/styles/_variables.scss";',
+                sassOptions: {
+                    includePaths: ['./node_modules']
+                }
             },
         },
         sourceMap: true
