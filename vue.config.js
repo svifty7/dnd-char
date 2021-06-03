@@ -1,9 +1,13 @@
 const path = require('path');
 
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/dnd-char/'
+        : '/',
     outputDir: 'public_html',
     filenameHashing: true,
     runtimeCompiler: true,
+    productionSourceMap: false,
     chainWebpack: config => {
         const svgRule = config.module.rule('svg');
 
